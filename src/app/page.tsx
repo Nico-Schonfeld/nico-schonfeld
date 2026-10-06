@@ -12,7 +12,7 @@ import {
   Footer,
 } from "@/components/ui/construction";
 
-import { CodeXmlIcon, FileIcon, MailIcon } from "lucide-react";
+import { CodeXmlIcon, FileIcon, MailIcon, PlusIcon } from "lucide-react";
 import { WorkExperience } from "@/components/work-experience";
 import type { ExperienceItemType } from "@/components/work-experience";
 import { Signature } from "@/components/signature";
@@ -29,10 +29,34 @@ import {
 import AnimatedGradient from "@/components/animated-gradient";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Spotlight } from "@/components/motion-primitives/spotlight";
 import { Tilt } from "@/components/motion-primitives/tilt";
 import GitHubContributionsDemo from "@/components/GithubComponent";
-import { Skills } from "@/components/skills";
+import { SkillPills, Skills } from "@/components/skills";
+import {
+  MorphingDialog,
+  MorphingDialogClose,
+  MorphingDialogContainer,
+  MorphingDialogContent,
+  MorphingDialogDescription,
+  MorphingDialogImage,
+  MorphingDialogSubtitle,
+  MorphingDialogTitle,
+  MorphingDialogTrigger,
+} from "@/components/motion-primitives/morphing-dialog";
+import { TextLoop } from "@/components/motion-primitives/text-loop";
+import { redirect } from "next/navigation";
+
+function useMedia(query: string) {
+  return React.useSyncExternalStore(
+    (onStoreChange) => {
+      const media = window.matchMedia(query);
+      media.addEventListener("change", onStoreChange);
+      return () => media.removeEventListener("change", onStoreChange);
+    },
+    () => window.matchMedia(query).matches,
+    () => false,
+  );
+}
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -55,6 +79,8 @@ function GithubIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE;
 
 export default function HomePage() {
   const WORK_EXPERIENCE: ExperienceItemType[] = [
@@ -119,6 +145,11 @@ export default function HomePage() {
 
   const springOptions = { bounce: 0.1 };
 
+  const isMobile = useMedia("(max-width: 768px)");
+
+  if (MAINTENANCE_MODE === "true") {
+    redirect("/mantenance");
+  }
   return (
     <>
       <Construction
@@ -160,7 +191,7 @@ export default function HomePage() {
         <Section className="flex items-end justify-start gap-0 px-0 py-0">
           <div className="border">
             <Avatar
-              className="w-40 h-40 cursor-pointer"
+              className="md:w-40 md:h-40 w-20 h-20 cursor-pointer"
               onClick={() => setIsOpen(true)}
             >
               <AvatarImage src={avatarImage} />
@@ -176,7 +207,7 @@ export default function HomePage() {
             <div className="border w-full">
               <Signature
                 text="Nico Schönfeld"
-                fontSize={16}
+                fontSize={isMobile ? 12 : 16}
                 color={theme === "dark" ? "#ffffff" : "#000000"}
               />
             </div>
@@ -190,7 +221,7 @@ export default function HomePage() {
 
           <BleedLine variant="solid" className="mb-3" />
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center flex-wrap gap-2">
             <Button>
               <FileIcon className="w-4 h-4" /> CV
             </Button>
@@ -341,7 +372,325 @@ export default function HomePage() {
         <Section>
           <h2 className="text-2xl font-bold">Proyectos</h2>
           <BleedLine variant="solid" />
-          <p>hola</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <MorphingDialog
+              transition={{
+                type: "spring",
+                bounce: 0.05,
+                duration: 0.25,
+              }}
+            >
+              <MorphingDialogTrigger
+                style={{
+                  borderRadius: "12px",
+                }}
+                className="flex w-full flex-col overflow-hidden border border-zinc-950/10 bg-white text-left dark:border-zinc-50/10 dark:bg-zinc-900"
+              >
+                <MorphingDialogImage
+                  src="/proyect_example.png"
+                  alt="Tablero de Icodraw, un SaaS para capturar la pantalla, recortar y anotar."
+                  className="h-40 w-full object-cover"
+                />
+                <div className="flex flex-col gap-3 px-3 py-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <MorphingDialogTitle className="text-zinc-950 dark:text-zinc-50">
+                        Icodraw
+                      </MorphingDialogTitle>
+                      <MorphingDialogSubtitle className="text-zinc-700 dark:text-zinc-400">
+                        SaaS de ejemplo para capturar y anotar la pantalla.
+                      </MorphingDialogSubtitle>
+                    </div>
+                    <span
+                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 dark:border-zinc-50/10"
+                      aria-hidden="true"
+                    >
+                      <PlusIcon size={12} />
+                    </span>
+                  </div>
+                  <SkillPills
+                    names={["TypeScript", "React", "Next.js", "Tailwind CSS"]}
+                  />
+                </div>
+              </MorphingDialogTrigger>
+              <MorphingDialogContainer>
+                <MorphingDialogContent
+                  style={{
+                    borderRadius: "24px",
+                  }}
+                  className="pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-125"
+                >
+                  <MorphingDialogImage
+                    src="/proyect_example.png"
+                    alt="Tablero de Icodraw, un SaaS para capturar la pantalla, recortar y anotar."
+                    className="h-56 w-full object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
+                        Icodraw
+                      </MorphingDialogTitle>
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/10 px-2.5 py-1 text-xs text-zinc-700 dark:border-zinc-50/10 dark:text-zinc-300">
+                          <span className="size-2 rounded-full bg-green-500" />
+                          Live
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/10 px-2.5 py-1 text-xs text-zinc-700 dark:border-zinc-50/10 dark:text-zinc-300">
+                          <CodeXmlIcon className="size-3.5" />
+                          Code
+                        </span>
+                      </div>
+                    </div>
+                    <MorphingDialogSubtitle className="mt-1 text-zinc-700 dark:text-zinc-400">
+                      Captura de pantalla y anotación, directo en el navegador.
+                    </MorphingDialogSubtitle>
+                    <MorphingDialogDescription
+                      disableLayoutAnimation
+                      variants={{
+                        initial: { opacity: 0, scale: 0.8, y: 100 },
+                        animate: { opacity: 1, scale: 1, y: 0 },
+                        exit: { opacity: 0, scale: 0.8, y: 100 },
+                      }}
+                    >
+                      <p className="mt-3 text-zinc-500">
+                        Proyecto de ejemplo: un SaaS liviano para recortar lo
+                        que se ve en pantalla, marcarlo y exportarlo sin
+                        instalar nada. Sirve para documentar un bug, señalar un
+                        flujo o armar una guía visual en el momento.
+                      </p>
+                      <p className="mt-2 text-zinc-500">
+                        El tablero reúne recorte, formas, texto y una barra de
+                        fondos. Antes de descargar se ajustan el desenfoque, el
+                        formato y la paleta del marco.
+                      </p>
+                      <SkillPills
+                        className="mt-4"
+                        names={[
+                          "TypeScript",
+                          "React",
+                          "Next.js",
+                          "Tailwind CSS",
+                        ]}
+                      />
+                    </MorphingDialogDescription>
+                  </div>
+                  <MorphingDialogClose className="rounded-full bg-black/60 p-1 text-white" />
+                </MorphingDialogContent>
+              </MorphingDialogContainer>
+            </MorphingDialog>
+
+            <MorphingDialog
+              transition={{
+                type: "spring",
+                bounce: 0.05,
+                duration: 0.25,
+              }}
+            >
+              <MorphingDialogTrigger
+                style={{
+                  borderRadius: "12px",
+                }}
+                className="flex w-full flex-col overflow-hidden border border-zinc-950/10 bg-white text-left dark:border-zinc-50/10 dark:bg-zinc-900"
+              >
+                <MorphingDialogImage
+                  src="/proyect_example.png"
+                  alt="Tablero de Icodraw, un SaaS para capturar la pantalla, recortar y anotar."
+                  className="h-40 w-full object-cover"
+                />
+                <div className="flex flex-col gap-3 px-3 py-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <MorphingDialogTitle className="text-zinc-950 dark:text-zinc-50">
+                        Icodraw
+                      </MorphingDialogTitle>
+                      <MorphingDialogSubtitle className="text-zinc-700 dark:text-zinc-400">
+                        SaaS de ejemplo para capturar y anotar la pantalla.
+                      </MorphingDialogSubtitle>
+                    </div>
+                    <span
+                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 dark:border-zinc-50/10"
+                      aria-hidden="true"
+                    >
+                      <PlusIcon size={12} />
+                    </span>
+                  </div>
+                  <SkillPills
+                    names={["TypeScript", "React", "Next.js", "Tailwind CSS"]}
+                  />
+                </div>
+              </MorphingDialogTrigger>
+              <MorphingDialogContainer>
+                <MorphingDialogContent
+                  style={{
+                    borderRadius: "24px",
+                  }}
+                  className="pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-125"
+                >
+                  <MorphingDialogImage
+                    src="/proyect_example.png"
+                    alt="Tablero de Icodraw, un SaaS para capturar la pantalla, recortar y anotar."
+                    className="h-56 w-full object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
+                        Icodraw
+                      </MorphingDialogTitle>
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/10 px-2.5 py-1 text-xs text-zinc-700 dark:border-zinc-50/10 dark:text-zinc-300">
+                          <span className="size-2 rounded-full bg-green-500" />
+                          Live
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/10 px-2.5 py-1 text-xs text-zinc-700 dark:border-zinc-50/10 dark:text-zinc-300">
+                          <CodeXmlIcon className="size-3.5" />
+                          Code
+                        </span>
+                      </div>
+                    </div>
+                    <MorphingDialogSubtitle className="mt-1 text-zinc-700 dark:text-zinc-400">
+                      Captura de pantalla y anotación, directo en el navegador.
+                    </MorphingDialogSubtitle>
+                    <MorphingDialogDescription
+                      disableLayoutAnimation
+                      variants={{
+                        initial: { opacity: 0, scale: 0.8, y: 100 },
+                        animate: { opacity: 1, scale: 1, y: 0 },
+                        exit: { opacity: 0, scale: 0.8, y: 100 },
+                      }}
+                    >
+                      <p className="mt-3 text-zinc-500">
+                        Proyecto de ejemplo: un SaaS liviano para recortar lo
+                        que se ve en pantalla, marcarlo y exportarlo sin
+                        instalar nada. Sirve para documentar un bug, señalar un
+                        flujo o armar una guía visual en el momento.
+                      </p>
+                      <p className="mt-2 text-zinc-500">
+                        El tablero reúne recorte, formas, texto y una barra de
+                        fondos. Antes de descargar se ajustan el desenfoque, el
+                        formato y la paleta del marco.
+                      </p>
+                      <SkillPills
+                        className="mt-4"
+                        names={[
+                          "TypeScript",
+                          "React",
+                          "Next.js",
+                          "Tailwind CSS",
+                        ]}
+                      />
+                    </MorphingDialogDescription>
+                  </div>
+                  <MorphingDialogClose className="rounded-full bg-black/60 p-1 text-white" />
+                </MorphingDialogContent>
+              </MorphingDialogContainer>
+            </MorphingDialog>
+
+            <MorphingDialog
+              transition={{
+                type: "spring",
+                bounce: 0.05,
+                duration: 0.25,
+              }}
+            >
+              <MorphingDialogTrigger
+                style={{
+                  borderRadius: "12px",
+                }}
+                className="flex w-full flex-col overflow-hidden border border-zinc-950/10 bg-white text-left dark:border-zinc-50/10 dark:bg-zinc-900"
+              >
+                <MorphingDialogImage
+                  src="/proyect_example.png"
+                  alt="Tablero de Icodraw, un SaaS para capturar la pantalla, recortar y anotar."
+                  className="h-40 w-full object-cover"
+                />
+                <div className="flex flex-col gap-3 px-3 py-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <MorphingDialogTitle className="text-zinc-950 dark:text-zinc-50">
+                        Icodraw
+                      </MorphingDialogTitle>
+                      <MorphingDialogSubtitle className="text-zinc-700 dark:text-zinc-400">
+                        SaaS de ejemplo para capturar y anotar la pantalla.
+                      </MorphingDialogSubtitle>
+                    </div>
+                    <span
+                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 dark:border-zinc-50/10"
+                      aria-hidden="true"
+                    >
+                      <PlusIcon size={12} />
+                    </span>
+                  </div>
+                  <SkillPills
+                    names={["TypeScript", "React", "Next.js", "Tailwind CSS"]}
+                  />
+                </div>
+              </MorphingDialogTrigger>
+              <MorphingDialogContainer>
+                <MorphingDialogContent
+                  style={{
+                    borderRadius: "24px",
+                  }}
+                  className="pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-125"
+                >
+                  <MorphingDialogImage
+                    src="/proyect_example.png"
+                    alt="Tablero de Icodraw, un SaaS para capturar la pantalla, recortar y anotar."
+                    className="h-56 w-full object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
+                        Icodraw
+                      </MorphingDialogTitle>
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/10 px-2.5 py-1 text-xs text-zinc-700 dark:border-zinc-50/10 dark:text-zinc-300">
+                          <span className="size-2 rounded-full bg-green-500" />
+                          Live
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/10 px-2.5 py-1 text-xs text-zinc-700 dark:border-zinc-50/10 dark:text-zinc-300">
+                          <CodeXmlIcon className="size-3.5" />
+                          Code
+                        </span>
+                      </div>
+                    </div>
+                    <MorphingDialogSubtitle className="mt-1 text-zinc-700 dark:text-zinc-400">
+                      Captura de pantalla y anotación, directo en el navegador.
+                    </MorphingDialogSubtitle>
+                    <MorphingDialogDescription
+                      disableLayoutAnimation
+                      variants={{
+                        initial: { opacity: 0, scale: 0.8, y: 100 },
+                        animate: { opacity: 1, scale: 1, y: 0 },
+                        exit: { opacity: 0, scale: 0.8, y: 100 },
+                      }}
+                    >
+                      <p className="mt-3 text-zinc-500">
+                        Proyecto de ejemplo: un SaaS liviano para recortar lo
+                        que se ve en pantalla, marcarlo y exportarlo sin
+                        instalar nada. Sirve para documentar un bug, señalar un
+                        flujo o armar una guía visual en el momento.
+                      </p>
+                      <p className="mt-2 text-zinc-500">
+                        El tablero reúne recorte, formas, texto y una barra de
+                        fondos. Antes de descargar se ajustan el desenfoque, el
+                        formato y la paleta del marco.
+                      </p>
+                      <SkillPills
+                        className="mt-4"
+                        names={[
+                          "TypeScript",
+                          "React",
+                          "Next.js",
+                          "Tailwind CSS",
+                        ]}
+                      />
+                    </MorphingDialogDescription>
+                  </div>
+                  <MorphingDialogClose className="rounded-full bg-black/60 p-1 text-white" />
+                </MorphingDialogContent>
+              </MorphingDialogContainer>
+            </MorphingDialog>
+          </div>
         </Section>
 
         <HatchBand height="xl" variant="solid" />
@@ -416,7 +765,7 @@ export default function HomePage() {
         </AnimatePresence>
       )}
 
-      {isOpen ? null : (
+      {isOpen || isMobile ? null : (
         <CursorProvider global>
           <Cursor />
           <CursorFollow
@@ -425,7 +774,21 @@ export default function HomePage() {
             align="end"
             alignOffset={5}
           >
-            Hola!
+            <TextLoop
+              interval={5}
+              className="font-mono text-sm hidden md:block"
+            >
+              <div className="flex items-center gap-2">
+                <span role="img" aria-label="Código">
+                  👨‍💻
+                </span>
+                <span role="img" aria-label="Café">
+                  ☕
+                </span>
+              </div>
+              <span>Hola!</span>
+              <span>¿Conectemos?</span>
+            </TextLoop>
           </CursorFollow>
         </CursorProvider>
       )}
