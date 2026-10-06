@@ -79,7 +79,7 @@ export default function MaintenancePage() {
             En obra
           </p>
           <h1 className="max-w-xl text-3xl font-bold tracking-tight md:text-4xl">
-            El portafolio está en mantenimiento
+            Mi portafolio está en mantenimiento
           </h1>
           <BleedLine variant="solid" />
           <p className="max-w-md text-base leading-relaxed text-[#a1a1a1] dark:text-[#b5b5bf]">
