@@ -7,74 +7,17 @@ export function About() {
 
       <Section>
         <h2 className="text-2xl font-bold">Sobre mí</h2>
-        <BleedLine variant="solid" />
-        <ul className="list-disc pl-5 space-y-2 text-base leading-relaxed">
-          <li className="dark:dark:text-[#b5b5bf] text-[#a1a1a1]">
-            ¡Hola! Me llamo Nicolás Schönfeld, soy desarrollador Full-Stack
-            aunque me apasiona el Front-End. Tengo 24 años y vivo en Cruz del
-            Eje, Córdoba, Argentina.
-          </li>
-          <li className="dark:text-[#b5b5bf] text-[#a1a1a1]">
-            Soy creativo y me esfuerzo constantemente por innovar o mejorar lo
-            que ya existe, con especial foco en la experiencia de usuario.
-          </li>
-          <li className="dark:text-[#b5b5bf] text-[#a1a1a1]">
-            Construyo productos end-to-end principalmente con{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              React.js
-            </strong>{" "}
-            y{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              TypeScript
-            </strong>{" "}
-            en el frontend, y{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              Next.js
-            </strong>{" "}
-            o{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              Express.js
-            </strong>{" "}
-            en el backend, diseñando APIs REST eficientes.
-          </li>
-          <li className="dark:text-[#b5b5bf] text-[#a1a1a1]">
-            Experiencia trabajando con bases de datos relacionales como{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              MySQL
-            </strong>
-            .
-          </li>
-          <li className="dark:text-[#b5b5bf] text-[#a1a1a1]">
-            Sólidos conocimientos de{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              GIT
-            </strong>{" "}
-            para versionado de código,{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              Docker
-            </strong>{" "}
-            para ambientes reproducibles, y metodologías ágiles{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              SCRUM
-            </strong>
-            .
-          </li>
-          <li className="dark:text-[#b5b5bf] text-[#a1a1a1]">
-            Manejo herramientas Atlassian como{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              Jira
-            </strong>
-            ,{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              Confluence
-            </strong>{" "}
-            y{" "}
-            <strong className="font-medium dark:text-white text-black underline underline-offset-2">
-              BitBucket
-            </strong>
-            .
-          </li>
-        </ul>
+        <BleedLine variant="solid" className="my-2" />
+
+        <p className="dark:dark:text-[#b5b5bf] text-[#6d6d6d]">
+          Me llamo Nicolás Schönfeld, soy desarrollador Full Stack con especial
+          interés en el desarrollo Front-End. Tengo 25 años y vivo en Córdoba,
+          Argentina. Desde 2022 participo en productos digitales para empresas.
+          Me destaco por mi creatividad y por buscar constantemente mejorar e
+          innovar en los proyectos en los que participo. Puedo trabajar en
+          equipo, tengo comunicación efectiva y la resolución de desafíos
+          complejos forman parte de cómo desarrollo cada producto.
+        </p>
       </Section>
     </>
   );

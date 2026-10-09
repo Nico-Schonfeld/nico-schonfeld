@@ -18,24 +18,20 @@ const WORK_EXPERIENCE: ExperienceItemType[] = [
         employmentType: "Jornada completa",
         icon: <CodeXmlIcon />,
         isExpanded: true,
-        description: `- Desarrollo front-end con React.js y TypeScript.
-- Desarrollo back-end con Next.js y Express, y consumo de APIs REST.
-- Trabajo con bases de datos relacionales en MySQL.
-- Versionado con Git y contenedores con Docker.
-- Trabajo con Scrum y herramientas de Atlassian: Jira, Confluence y Bitbucket.`,
+        description:
+          "Actualmente desarrollo e implemento sitios, aplicaciones y paneles para distintos clientes, tanto en Front-End como en Back-End. Trabajo de manera colaborativa con equipos interdisciplinarios en el análisis de requerimientos, la optimización de procesos y la creación de soluciones que mejoran la experiencia del usuario.",
         skills: [
+          "Next.js",
           "React.js",
           "TypeScript",
-          "Next.js",
-          "Express.js",
-          "API REST",
           "MySQL",
-          "Git",
+          "AWS",
           "Docker",
+          "API REST",
+          "Express.js",
+          "Git",
           "Scrum",
-          "Jira",
-          "Confluence",
-          "Bitbucket",
+          "Herramientas Atlassian",
         ],
       },
     ],
@@ -51,8 +47,9 @@ const WORK_EXPERIENCE: ExperienceItemType[] = [
         employmentType: "Jornada completa",
         icon: <CodeXmlIcon />,
         isExpanded: true,
-        description: "Adaptación y maquetación de una plantilla en React.js.",
-        skills: ["React.js", "Desarrollo front-end"],
+        description:
+          "Participé como desarrollador Front-End en esta startup de nutrición inteligente para cultivos y fertilización. Me encargaba del diseño y el maquetado del sistema con React.js, SASS y Bootstrap 5, colaboré en la integración con bases de datos y en la documentación técnica del proyecto.",
+        skills: ["React.js", "SASS", "Bootstrap 5"],
       },
     ],
   },
@@ -64,7 +61,7 @@ export function Experience() {
       <HatchBand height="xl" variant="solid" />
       <Section>
         <h2 className="text-2xl font-bold">Experiencia profesional</h2>
-        <BleedLine variant="solid" />
+        <BleedLine variant="solid" className="my-2" />
 
         <WorkExperience experiences={WORK_EXPERIENCE} />
       </Section>

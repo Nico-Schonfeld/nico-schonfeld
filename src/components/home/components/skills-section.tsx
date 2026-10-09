@@ -7,7 +7,7 @@ export function SkillsSection() {
       <HatchBand height="xl" variant="solid" />
       <Section>
         <h2 className="text-2xl font-bold">Habilidades</h2>
-        <BleedLine variant="solid" />
+        <BleedLine variant="solid" className="my-2" />
 
         <Skills />
       </Section>

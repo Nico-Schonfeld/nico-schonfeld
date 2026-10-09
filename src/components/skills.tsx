@@ -48,26 +48,27 @@ export function SkillPills({
   pillClassName?: string
   iconClassName?: string
 }) {
-  const selected = names.flatMap((name) => {
-    const skill = skills.find((item) => item.name === name)
-    return skill ? [skill] : []
-  })
-
   return (
     <ul className={cn("flex flex-wrap gap-1.5", className)}>
-      {selected.map((skill) => (
-        <li key={skill.name}>
-          <span
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-2 py-0.5 text-xs text-foreground",
-              pillClassName,
-            )}
-          >
-            <skill.Icon className={cn("shrink-0", iconClassName)} />
-            {skill.name}
-          </span>
-        </li>
-      ))}
+      {names.map((name) => {
+        const skill = skills.find((item) => item.name === name)
+
+        return (
+          <li key={name}>
+            <span
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-2 py-0.5 text-xs text-foreground",
+                pillClassName,
+              )}
+            >
+              {skill ? (
+                <skill.Icon className={cn("shrink-0", iconClassName)} />
+              ) : null}
+              {name}
+            </span>
+          </li>
+        )
+      })}
     </ul>
   )
 }

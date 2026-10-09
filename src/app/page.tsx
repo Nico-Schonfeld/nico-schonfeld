@@ -50,9 +50,9 @@ export default function HomePage() {
         <Contact />
         <About />
         <Experience />
-        <GitHubSection />
         <SkillsSection />
         <Projects />
+        <GitHubSection />
         <SiteFooter theme={theme} />
       </Construction>
 

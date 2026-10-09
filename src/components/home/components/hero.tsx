@@ -26,16 +26,19 @@ export function Hero({
       </div>
 
       <div className="w-full">
-        <div className="w-full relative min-h-[3.7rem]">
+        <div className="w-full relative min-h-[2.25rem]">
           <HatchFill className="absolute inset-0" />
         </div>
 
-        <div className="border w-full">
+        <div className="border w-full flex flex-col gap-0">
           <Signature
             text="Nico Schönfeld"
             fontSize={isMobile ? 12 : 16}
             color={theme === "dark" ? "#ffffff" : "#000000"}
           />
+          <p className="dark:dark:text-[#b5b5bf] text-[#a1a1a1] text-ms px-3 border-t">
+            Desarrollador Full Stack · Next.js y TypeScript
+          </p>
         </div>
       </div>
     </Section>

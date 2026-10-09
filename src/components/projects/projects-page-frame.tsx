@@ -2,9 +2,9 @@
 
 import { useTheme } from "next-themes";
 
-import { ContactForm } from "@/components/contact/contact-form";
 import { BackHome } from "@/components/home/components/back-home";
 import { HomeBackground } from "@/components/home/components/home-background";
+import { ProjectCard } from "@/components/home/components/project-card";
 import { SiteFooter } from "@/components/home/components/site-footer";
 import { SiteHeader } from "@/components/home/components/site-header";
 import {
@@ -13,8 +13,9 @@ import {
   HatchBand,
   Main,
 } from "@/components/ui/construction";
+import projects from "@/data/projects.json";
 
-export function ContactPageFrame() {
+export function ProjectsPageFrame() {
   const { theme } = useTheme();
 
   return (
@@ -31,17 +32,15 @@ export function ContactPageFrame() {
         <SiteHeader />
         <HatchBand height="xl" variant="solid" />
 
-        <Main className="flex flex-1 flex-col justify-center gap-4 py-16">
+        <Main className="flex flex-1 flex-col gap-4 py-16">
           <BackHome />
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Enviame un mensaje
-          </h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Proyectos</h1>
           <BleedLine variant="solid" />
-          <p className="text-sm leading-relaxed text-[#a1a1a1] dark:text-[#b5b5bf]">
-            Escribí acá y me llega a la bandeja. Roles, trabajo freelance o una
-            pregunta sobre algo que armé.
-          </p>
-          <ContactForm />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
         </Main>
 
         <SiteFooter theme={theme} />

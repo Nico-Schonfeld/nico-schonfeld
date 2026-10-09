@@ -1,4 +1,5 @@
-import { CodeXmlIcon, PlusIcon } from "lucide-react";
+import { type ReactNode } from "react";
+import { ExternalLinkIcon, PlusIcon } from "lucide-react";
 
 import { SkillPills } from "@/components/skills";
 import {
@@ -13,9 +14,43 @@ import {
   MorphingDialogTrigger,
 } from "@/components/motion-primitives/morphing-dialog";
 
-const projectSkills = ["TypeScript", "React", "Next.js", "Tailwind CSS"];
+export type Project = {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  imageAlt: string;
+  liveUrl?: string;
+  codeUrl?: string;
+  company?: {
+    name: string;
+    url: string;
+  };
+  paragraphs: string[];
+  skills: string[];
+};
 
-export function ProjectCard() {
+function ProjectLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/15 px-3 py-1 text-xs text-zinc-800 underline-offset-2 hover:underline dark:border-zinc-50/15 dark:text-zinc-200"
+    >
+      <ExternalLinkIcon className="size-3.5 shrink-0" />
+      {children}
+    </a>
+  );
+}
+
+export function ProjectCard({ project }: { project: Project }) {
   return (
     <MorphingDialog
       transition={{
@@ -31,18 +66,18 @@ export function ProjectCard() {
         className="flex w-full flex-col overflow-hidden border border-zinc-950/10 bg-white text-left dark:border-zinc-50/10 dark:bg-zinc-900"
       >
         <MorphingDialogImage
-          src="/proyect_example.png"
-          alt="Tablero de Icodraw, un SaaS para capturar la pantalla, recortar y anotar."
+          src={project.image}
+          alt={project.imageAlt}
           className="h-40 w-full object-cover"
         />
         <div className="flex flex-col gap-3 px-3 py-3">
           <div className="flex items-start justify-between gap-3">
             <div>
               <MorphingDialogTitle className="text-zinc-950 dark:text-zinc-50">
-                Icodraw
+                {project.title}
               </MorphingDialogTitle>
               <MorphingDialogSubtitle className="text-zinc-700 dark:text-zinc-400">
-                SaaS de ejemplo para capturar y anotar la pantalla.
+                {project.subtitle}
               </MorphingDialogSubtitle>
             </div>
             <span
@@ -52,7 +87,7 @@ export function ProjectCard() {
               <PlusIcon size={12} />
             </span>
           </div>
-          <SkillPills names={projectSkills} />
+          <SkillPills names={project.skills} />
         </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
@@ -63,29 +98,30 @@ export function ProjectCard() {
           className="pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-125"
         >
           <MorphingDialogImage
-            src="/proyect_example.png"
-            alt="Tablero de Icodraw, un SaaS para capturar la pantalla, recortar y anotar."
+            src={project.image}
+            alt={project.imageAlt}
             className="h-56 w-full object-cover"
           />
           <div className="p-6">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
-                Icodraw
-              </MorphingDialogTitle>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/10 px-2.5 py-1 text-xs text-zinc-700 dark:border-zinc-50/10 dark:text-zinc-300">
-                  <span className="size-2 rounded-full bg-green-500" />
-                  Live
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-950/10 px-2.5 py-1 text-xs text-zinc-700 dark:border-zinc-50/10 dark:text-zinc-300">
-                  <CodeXmlIcon className="size-3.5" />
-                  Code
-                </span>
-              </div>
-            </div>
+            <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
+              {project.title}
+            </MorphingDialogTitle>
             <MorphingDialogSubtitle className="mt-1 text-zinc-700 dark:text-zinc-400">
-              Captura de pantalla y anotación, directo en el navegador.
+              {project.subtitle}
             </MorphingDialogSubtitle>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {project.liveUrl ? (
+                <ProjectLink href={project.liveUrl}>Visitar sitio web</ProjectLink>
+              ) : null}
+              {project.company ? (
+                <ProjectLink href={project.company.url}>
+                  Ver {project.company.name}
+                </ProjectLink>
+              ) : null}
+              {project.codeUrl ? (
+                <ProjectLink href={project.codeUrl}>Ver código</ProjectLink>
+              ) : null}
+            </div>
             <MorphingDialogDescription
               disableLayoutAnimation
               variants={{
@@ -94,18 +130,12 @@ export function ProjectCard() {
                 exit: { opacity: 0, scale: 0.8, y: 100 },
               }}
             >
-              <p className="mt-3 text-zinc-500">
-                Proyecto de ejemplo: un SaaS liviano para recortar lo que se ve
-                en pantalla, marcarlo y exportarlo sin instalar nada. Sirve
-                para documentar un bug, señalar un flujo o armar una guía visual
-                en el momento.
-              </p>
-              <p className="mt-2 text-zinc-500">
-                El tablero reúne recorte, formas, texto y una barra de fondos.
-                Antes de descargar se ajustan el desenfoque, el formato y la
-                paleta del marco.
-              </p>
-              <SkillPills className="mt-4" names={projectSkills} />
+              {project.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="mt-3 text-zinc-500">
+                  {paragraph}
+                </p>
+              ))}
+              <SkillPills className="mt-4" names={project.skills} />
             </MorphingDialogDescription>
           </div>
           <MorphingDialogClose className="rounded-full bg-black/60 p-1 text-white" />

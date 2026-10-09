@@ -1,0 +1,119 @@
+[
+  {
+    "id": "bancor-fondos",
+    "title": "Bancor Fondos",
+    "subtitle": "Participé en el desarrollo · 25Watts",
+    "image": "/proyect_example.png",
+    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de Bancor Fondos.",
+    "liveUrl": "https://www.bancorfondos.com.ar/",
+    "company": {
+      "name": "25Watts",
+      "url": "https://25watts.com.ar/"
+    },
+    "paragraphs": [
+      "Participé en el desarrollo de este sitio dentro del equipo de 25Watts. El producto y la marca son de Bancor Fondos.",
+      "El sitio reúne los fondos Champaquí, con la información de cada uno, simuladores y rendimientos, para consultarlos desde cualquier dispositivo."
+    ],
+    "skills": ["TypeScript", "React", "Next.js", "MySQL", "Prisma"]
+  },
+  {
+    "id": "el-solar-shopping",
+    "title": "El Solar Shopping",
+    "subtitle": "Participé en el desarrollo · 25Watts",
+    "image": "/proyect_example.png",
+    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de El Solar Shopping.",
+    "liveUrl": "https://www.elsolarshopping.com.ar/",
+    "company": {
+      "name": "25Watts",
+      "url": "https://25watts.com.ar/"
+    },
+    "paragraphs": [
+      "Participé en el desarrollo de este sitio dentro del equipo de 25Watts. El producto y la marca son de El Solar Shopping.",
+      "El sitio presenta el centro comercial: los locales, el programa de beneficios, los eventos y la información para visitarlo."
+    ],
+    "skills": ["TypeScript", "React", "Next.js", "MySQL", "Prisma"]
+  },
+  {
+    "id": "vinnova",
+    "title": "VINnova",
+    "subtitle": "Participé en el desarrollo · 25Watts",
+    "image": "/proyect_example.png",
+    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de VINnova.",
+    "liveUrl": "https://vinnova.cba.gov.ar/",
+    "company": {
+      "name": "25Watts",
+      "url": "https://25watts.com.ar/"
+    },
+    "paragraphs": [
+      "Participé en el desarrollo de esta plataforma dentro del equipo de 25Watts. El producto es del Ministerio de Ciencia y Tecnología de Córdoba.",
+      "VINnova reúne la oferta científica y tecnológica de la provincia: servicios tecnológicos, líneas de investigación y emprendimientos, para que el sector productivo pueda encontrarlos."
+    ],
+    "skills": ["Next.js", "Tailwind CSS", "shadcn/ui", "Express.js", "Oracle"]
+  },
+  {
+    "id": "ecogas",
+    "title": "Ecogas",
+    "subtitle": "Participé en el desarrollo · 25Watts",
+    "image": "/proyect_example.png",
+    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de Ecogas.",
+    "liveUrl": "https://ecogas.com.ar/",
+    "company": {
+      "name": "25Watts",
+      "url": "https://25watts.com.ar/"
+    },
+    "paragraphs": [
+      "Participé en la creación del sitio público y del CMS que administra la web, dentro del equipo de 25Watts. El producto y la marca son de Ecogas.",
+      "El sitio reúne facturas, trámites y canales de atención para hogares, comercios y grandes clientes en Córdoba, Catamarca, La Rioja, Mendoza, San Juan y San Luis. El CMS organiza los módulos de la web y la carga de archivos a S3 AWS."
+    ],
+    "skills": ["Next.js", "Tailwind CSS", "AWS", "Prisma", "MySQL"]
+  },
+  {
+    "id": "nutrixya",
+    "title": "Nutrixya",
+    "subtitle": "Participé en el desarrollo · Nutrixya",
+    "image": "/proyect_example.png",
+    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de Nutrixya.",
+    "company": {
+      "name": "Nutrixya en X",
+      "url": "https://x.com/nutrixya"
+    },
+    "paragraphs": [
+      "Participé en el desarrollo de esta aplicación dentro del equipo de Nutrixya. El producto y la marca son de Nutrixya.",
+      "Es una aplicación para el cálculo de fertilización de cultivos extensivos y pasturas. Me encargaba del diseño y el maquetado con React.js, SASS y Bootstrap 5, y colaboré en la integración con bases de datos y en la documentación técnica."
+    ],
+    "skills": ["React", "SASS", "Bootstrap 5"]
+  },
+  {
+    "id": "straumix",
+    "title": "Straumix",
+    "subtitle": "Proyecto personal · en mantenimiento",
+    "image": "/proyect_example.png",
+    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de Straumix.",
+    "liveUrl": "https://www.straumix.com/",
+    "paragraphs": [
+      "Aplicación personal de finanzas. El sitio está en mantenimiento mientras priorizo el trabajo principal.",
+      "Toma como base el método 50/30/20, con porcentajes que se pueden adaptar. El tablero permite anotar ingresos, gastos, inversiones y metas, y calcular cuánto ahorrar para lograrlas. Hay un plan personal y un plan para parejas."
+    ],
+    "skills": [
+      "Next.js",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Prisma",
+      "PostgreSQL",
+      "Supabase"
+    ]
+  },
+  {
+    "id": "minimima",
+    "title": "MiniMima",
+    "subtitle": "Proyecto personal",
+    "image": "/proyect_example.png",
+    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de MiniMima.",
+    "liveUrl": "https://minimima.com/",
+    "paragraphs": [
+      "Sitio para MiniMima, un taller de costura creativa para chicas y chicos de 8 a 14 años. Se armó simple, con lo necesario para contar el curso y tomar la inscripción.",
+      "La inscripción deja los datos del tutor y del alumno listos para coordinar el resto por WhatsApp."
+    ],
+    "skills": ["Next.js", "Google Apps Script", "Google Sheets"]
+  }
+]

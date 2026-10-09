@@ -7,7 +7,7 @@ export function GitHubSection() {
       <HatchBand height="xl" variant="solid" />
       <Section>
         <h2 className="text-2xl font-bold">Contribuciones en GitHub</h2>
-        <BleedLine variant="solid" />
+        <BleedLine variant="solid" className="my-2" />
 
         <GitHubContributionsDemo />
       </Section>
