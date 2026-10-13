@@ -21,6 +21,7 @@ export type Project = {
   image: string;
   imageAlt: string;
   liveUrl?: string;
+  maintenance?: boolean;
   codeUrl?: string;
   company?: {
     name: string;
@@ -110,7 +111,11 @@ export function ProjectCard({ project }: { project: Project }) {
               {project.subtitle}
             </MorphingDialogSubtitle>
             <div className="mt-3 flex flex-wrap gap-2">
-              {project.liveUrl ? (
+              {project.maintenance ? (
+                <span className="inline-flex items-center rounded-full border border-zinc-950/15 px-3 py-1 text-xs text-zinc-500 dark:border-zinc-50/15 dark:text-zinc-400">
+                  En mantenimiento
+                </span>
+              ) : project.liveUrl ? (
                 <ProjectLink href={project.liveUrl}>Visitar sitio web</ProjectLink>
               ) : null}
               {project.company ? (

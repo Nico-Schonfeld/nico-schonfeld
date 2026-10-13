@@ -34,7 +34,7 @@ export function ContactPageFrame() {
         <Main className="flex flex-1 flex-col justify-center gap-4 py-16">
           <BackHome />
           <h1 className="text-2xl font-semibold tracking-tight">
-            Enviame un mensaje
+            Envíame un mensaje
           </h1>
           <BleedLine variant="solid" />
           <p className="text-sm leading-relaxed text-[#a1a1a1] dark:text-[#b5b5bf]">

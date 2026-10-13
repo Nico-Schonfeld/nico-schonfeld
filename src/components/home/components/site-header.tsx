@@ -29,7 +29,7 @@ export function SiteHeader() {
                   className="hover:underline flex items-center gap-1"
                 >
                   <MailIcon className="w-4 h-4" />
-                  <span className="hidden md:block">Enviame un correo</span>
+                  <span className="hidden md:block">Envíame un correo</span>
                 </Link>
               </li>
             </ul>
