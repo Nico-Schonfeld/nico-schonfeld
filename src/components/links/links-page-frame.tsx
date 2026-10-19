@@ -42,7 +42,7 @@ const links = [
     display: "linkedin.com/in/nicoschonfeld",
     external: true,
     Icon: LinkedinIcon,
-    view: true,
+    view: false,
   },
   {
     label: "GitHub",
