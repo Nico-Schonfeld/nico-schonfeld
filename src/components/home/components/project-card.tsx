@@ -96,52 +96,56 @@ export function ProjectCard({ project }: { project: Project }) {
           style={{
             borderRadius: "24px",
           }}
-          className="pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-125"
+          className="pointer-events-auto relative flex h-auto max-h-full min-h-0 w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-125"
         >
           <MorphingDialogImage
             src={project.image}
             alt={project.imageAlt}
-            className="h-56 w-full object-cover"
+            className="h-56 w-full shrink-0 object-cover"
           />
-          <div className="p-6">
-            <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
-              {project.title}
-            </MorphingDialogTitle>
-            <MorphingDialogSubtitle className="mt-1 text-zinc-700 dark:text-zinc-400">
-              {project.subtitle}
-            </MorphingDialogSubtitle>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {project.maintenance ? (
-                <span className="inline-flex items-center rounded-full border border-zinc-950/15 px-3 py-1 text-xs text-zinc-500 dark:border-zinc-50/15 dark:text-zinc-400">
-                  En mantenimiento
-                </span>
-              ) : project.liveUrl ? (
-                <ProjectLink href={project.liveUrl}>Visitar sitio web</ProjectLink>
-              ) : null}
-              {project.company ? (
-                <ProjectLink href={project.company.url}>
-                  Ver {project.company.name}
-                </ProjectLink>
-              ) : null}
-              {project.codeUrl ? (
-                <ProjectLink href={project.codeUrl}>Ver código</ProjectLink>
-              ) : null}
+          <div className="min-h-0 overflow-y-auto">
+            <div className="p-6">
+              <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
+                {project.title}
+              </MorphingDialogTitle>
+              <MorphingDialogSubtitle className="mt-1 text-zinc-700 dark:text-zinc-400">
+                {project.subtitle}
+              </MorphingDialogSubtitle>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {project.maintenance ? (
+                  <span className="inline-flex items-center rounded-full border border-zinc-950/15 px-3 py-1 text-xs text-zinc-500 dark:border-zinc-50/15 dark:text-zinc-400">
+                    En mantenimiento
+                  </span>
+                ) : project.liveUrl ? (
+                  <ProjectLink href={project.liveUrl}>
+                    Visitar sitio web
+                  </ProjectLink>
+                ) : null}
+                {project.company ? (
+                  <ProjectLink href={project.company.url}>
+                    Ver {project.company.name}
+                  </ProjectLink>
+                ) : null}
+                {project.codeUrl ? (
+                  <ProjectLink href={project.codeUrl}>Ver código</ProjectLink>
+                ) : null}
+              </div>
+              <MorphingDialogDescription
+                disableLayoutAnimation
+                variants={{
+                  initial: { opacity: 0, scale: 0.8, y: 100 },
+                  animate: { opacity: 1, scale: 1, y: 0 },
+                  exit: { opacity: 0, scale: 0.8, y: 100 },
+                }}
+              >
+                {project.paragraphs.map((paragraph) => (
+                  <p key={paragraph} className="mt-3 text-zinc-500">
+                    {paragraph}
+                  </p>
+                ))}
+                <SkillPills className="mt-4" names={project.skills} />
+              </MorphingDialogDescription>
             </div>
-            <MorphingDialogDescription
-              disableLayoutAnimation
-              variants={{
-                initial: { opacity: 0, scale: 0.8, y: 100 },
-                animate: { opacity: 1, scale: 1, y: 0 },
-                exit: { opacity: 0, scale: 0.8, y: 100 },
-              }}
-            >
-              {project.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="mt-3 text-zinc-500">
-                  {paragraph}
-                </p>
-              ))}
-              <SkillPills className="mt-4" names={project.skills} />
-            </MorphingDialogDescription>
           </div>
           <MorphingDialogClose className="rounded-full bg-black/60 p-1 text-white" />
         </MorphingDialogContent>

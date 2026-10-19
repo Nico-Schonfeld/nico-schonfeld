@@ -16,9 +16,13 @@ import {
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Mantenimiento · Nicolás Schönfeld",
+  title: "Mantenimiento",
   description:
     "El portafolio está en mantenimiento. Podés escribirme por correo.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE;
