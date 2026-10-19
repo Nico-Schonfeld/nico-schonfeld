@@ -17,6 +17,7 @@ export function HomeCursor({ hidden }: { hidden: boolean }) {
       <Cursor />
       <CursorFollow side="bottom" sideOffset={15} align="end" alignOffset={5}>
         <TextLoop interval={5} className="font-mono text-sm hidden md:block">
+          <span>¡Hola!👋</span>
           <div className="flex items-center gap-2">
             <span role="img" aria-label="Código">
               👨‍💻
@@ -25,7 +26,6 @@ export function HomeCursor({ hidden }: { hidden: boolean }) {
               ☕
             </span>
           </div>
-          <span>Hola!</span>
           <span>¿Conectemos?</span>
         </TextLoop>
       </CursorFollow>

@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-import { SendIcon } from "lucide-react";
+import { sileo } from "sileo";
 
 import { sendContactEmail } from "@/app/actions/contact";
 import { Button } from "@/components/ui/button";
@@ -16,8 +15,6 @@ type FieldErrors = Partial<Record<keyof ContactValues, string>>;
 export function ContactForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [pending, setPending] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [sendError, setSendError] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -41,27 +38,35 @@ export function ContactForm() {
         }
       }
       setErrors(nextErrors);
-      setSent(false);
-      setSendError(false);
       return;
     }
 
     setErrors({});
-    setSent(false);
-    setSendError(false);
     setPending(true);
 
-    const sentResult = await sendContactEmail(result.data);
-
-    setPending(false);
-
-    if (!sentResult.ok) {
-      setSendError(true);
-      return;
+    try {
+      await sileo.promise(
+        sendContactEmail(result.data).then((sentResult) => {
+          if (!sentResult.ok) {
+            throw new Error("No se pudo enviar");
+          }
+          return sentResult;
+        }),
+        {
+          loading: { title: "Enviando el mensaje" },
+          success: { title: "Mensaje enviado con éxito" },
+          error: {
+            title: "No se pudo enviar el mensaje",
+            description: "Intentá de nuevo en unos minutos.",
+          },
+        },
+      );
+      form.reset();
+    } catch {
+      // La alerta de error la muestra el toaster.
+    } finally {
+      setPending(false);
     }
-
-    form.reset();
-    setSent(true);
   }
 
   return (
@@ -131,26 +136,17 @@ export function ContactForm() {
         </p>
       </div>
 
-      <Button
-        type="submit"
-        variant="secondary"
-        className="h-11 w-full rounded-md"
-        disabled={pending}
-      >
-        <SendIcon />
-        {pending ? "Enviando…" : "Enviar mensaje"}
-      </Button>
-
-      {sent ? (
-        <p className="text-sm text-muted-foreground" role="status">
-          Listo. El mensaje ya salió.
-        </p>
-      ) : null}
-      {sendError ? (
-        <p className="text-sm text-destructive" role="alert">
-          No se pudo enviar. Probá de nuevo en un rato.
-        </p>
-      ) : null}
+      <div className="flex justify-end w-full">
+        <Button
+          type="submit"
+          variant="default"
+          className="h-11 w-fit rounded-md"
+          disabled={pending}
+        >
+          {/*<SendIcon /> */}
+          {pending ? "Enviando…" : "Enviar mensaje"}
+        </Button>
+      </div>
     </form>
   );
 }

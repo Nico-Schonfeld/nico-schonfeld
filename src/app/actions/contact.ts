@@ -2,6 +2,7 @@
 
 import { Resend } from "resend";
 
+import { ContactEmail } from "@/emails/contact-email";
 import { contactSchema } from "@/lib/contact-schema";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -19,10 +20,11 @@ export async function sendContactEmail(input: {
 
   const { name, email, message } = parsed.data;
   const { error } = await resend.emails.send({
-    from: "Portafolio <onboarding@resend.dev>",
+    from: "Portafolio de Nicolás Schönfeld <portfolio@nicoschonfeld.com>",
     to: "nicoschonfeld88@gmail.com",
     replyTo: email,
     subject: `Mensaje de ${name}`,
+    react: ContactEmail({ name, email, message }),
     text: `${name} (${email})\n\n${message}`,
   });
 

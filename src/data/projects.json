@@ -4,7 +4,7 @@
     "title": "Bancor Fondos",
     "subtitle": "Participé en el desarrollo · 25Watts",
     "image": "/bancor.png",
-    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de Bancor Fondos.",
+    "imageAlt": "Captura del sitio de Bancor Fondos, con los fondos Champaquí.",
     "liveUrl": "https://www.bancorfondos.com.ar/",
     "company": {
       "name": "25Watts",
@@ -21,7 +21,7 @@
     "title": "Ecogas",
     "subtitle": "Participé en el desarrollo · 25Watts",
     "image": "/ecogas.png",
-    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de Ecogas.",
+    "imageAlt": "Captura del sitio de Ecogas.",
     "liveUrl": "https://ecogas.com.ar/",
     "company": {
       "name": "25Watts",
@@ -38,7 +38,7 @@
     "title": "El Solar Shopping",
     "subtitle": "Participé en el desarrollo · 25Watts",
     "image": "/solar.png",
-    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de El Solar Shopping.",
+    "imageAlt": "Captura del sitio de El Solar Shopping.",
     "liveUrl": "https://www.elsolarshopping.com.ar/",
     "company": {
       "name": "25Watts",
@@ -55,7 +55,7 @@
     "title": "Straumix",
     "subtitle": "Proyecto personal · en mantenimiento",
     "image": "/straumix.png",
-    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de Straumix.",
+    "imageAlt": "Captura de Straumix, la aplicación de finanzas.",
     "liveUrl": "https://www.straumix.com/",
     "maintenance": false,
     "paragraphs": [
@@ -76,7 +76,7 @@
     "title": "Nutrixya",
     "subtitle": "Participé en el desarrollo · Nutrixya",
     "image": "/nutrixya.png",
-    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de Nutrixya.",
+    "imageAlt": "Captura de la aplicación de Nutrixya.",
     "company": {
       "name": "Nutrixya en X",
       "url": "https://x.com/nutrixya"
@@ -92,7 +92,7 @@
     "title": "VINnova",
     "subtitle": "Participé en el desarrollo · 25Watts",
     "image": "/vinnvoa.png",
-    "imageAlt": "Imagen de referencia. Pendiente de reemplazar por una captura de VINnova.",
+    "imageAlt": "Captura de la plataforma VINnova.",
     "liveUrl": "https://vinnova.cba.gov.ar/",
     "maintenance": true,
     "company": {

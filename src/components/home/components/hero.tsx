@@ -14,31 +14,39 @@ export function Hero({
   onOpenAvatar: () => void;
 }) {
   return (
-    <Section className="flex items-end justify-start gap-0 px-0 py-0">
-      <div className="border">
-        <Avatar
-          className="md:w-40 md:h-40 w-20 h-20 cursor-pointer"
-          onClick={onOpenAvatar}
-        >
-          <AvatarImage src={AVATAR_IMAGE} />
-          <AvatarFallback>NS</AvatarFallback>
-        </Avatar>
+    <Section className="flex flex-col gap-0 px-0 py-0">
+      <div className="relative h-9 w-full md:hidden">
+        <HatchFill className="absolute inset-0" />
       </div>
 
-      <div className="w-full">
-        <div className="w-full relative min-h-[2.25rem]">
-          <HatchFill className="absolute inset-0" />
+      <div className="flex items-start gap-0 md:items-end">
+        <div className="border">
+          <Avatar
+            className="size-28 cursor-pointer md:size-40"
+            onClick={onOpenAvatar}
+          >
+            <AvatarImage src={AVATAR_IMAGE} />
+            <AvatarFallback>NS</AvatarFallback>
+          </Avatar>
         </div>
 
-        <div className="border w-full flex flex-col gap-0">
-          <Signature
-            text="Nico Schönfeld"
-            fontSize={isMobile ? 12 : 16}
-            color={theme === "dark" ? "#ffffff" : "#000000"}
-          />
-          <p className="dark:dark:text-[#b5b5bf] text-[#a1a1a1] text-ms px-3 border-t">
-            Desarrollador Full Stack · Next.js y TypeScript
-          </p>
+        <div className="min-w-0 flex-1">
+          <div className="relative hidden h-9 w-full md:block">
+            <HatchFill className="absolute inset-0" />
+          </div>
+
+          <div className="flex w-full flex-col border">
+            <Signature
+              text="Nico Schönfeld"
+              fontSize={isMobile ? 12 : 16}
+              color={theme === "dark" ? "#ffffff" : "#000000"}
+              compact={isMobile}
+              className="block h-auto max-w-full"
+            />
+            <p className="dark:dark:text-[#b5b5bf] text-[#a1a1a1] text-ms px-3 border-t">
+              Desarrollador Full Stack · Next.js y TypeScript
+            </p>
+          </div>
         </div>
       </div>
     </Section>

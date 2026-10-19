@@ -158,6 +158,7 @@ interface SignatureProps {
   className?: string;
   inView?: boolean;
   once?: boolean;
+  compact?: boolean;
 }
 
 export function Signature({
@@ -169,12 +170,18 @@ export function Signature({
   className,
   inView = false,
   once = true,
+  compact = false,
 }: SignatureProps) {
   const [paths, setPaths] = useState<string[]>([]);
   const [width, setWidth] = useState<number>(300);
   const horizontalPadding = fontSize * 1;
   const topMargin = Math.max(5, (SVG_HEIGHT - fontSize) / 2);
   const baseline = Math.min(SVG_HEIGHT - 5, topMargin + fontSize);
+  const cropTop = compact ? Math.max(0, baseline - fontSize * 2.5 - 4) : 0;
+  const cropBottom = compact
+    ? Math.min(SVG_HEIGHT, baseline + fontSize * 2 + 4)
+    : SVG_HEIGHT;
+  const cropHeight = cropBottom - cropTop;
   const maskId = `signature-reveal-${useId().replace(/:/g, "")}`;
 
   useEffect(() => {
@@ -217,8 +224,8 @@ export function Signature({
     <motion.svg
       key={paths.length}
       width={width}
-      height={SVG_HEIGHT}
-      viewBox={`0 0 ${width} ${SVG_HEIGHT}`}
+      height={cropHeight}
+      viewBox={`0 ${cropTop} ${width} ${cropHeight}`}
       fill="none"
       className={className}
       initial="hidden"

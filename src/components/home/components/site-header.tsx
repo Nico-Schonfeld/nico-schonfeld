@@ -13,19 +13,21 @@ export function SiteHeader() {
   return (
     <>
       <Header className="flex justify-between items-center">
-        <Link
-          href="/"
-          className="dark:text-[#ffffff] text-[#000000] font-lastoria text-[8px]"
-        >
-          NS
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            className="dark:text-[#ffffff] text-[#000000] font-lastoria text-[8px]"
+          >
+            NS
+          </Link>
+        </div>
 
         <div className="flex items-center gap-4">
           {pathname === "/contact" ? null : (
             <ul className="flex items-center gap-3 text-sm">
               <li>
                 <Link
-                  href="mailto:nicoschonfeld88@gmail.com"
+                  href="/contact"
                   className="hover:underline flex items-center gap-1"
                 >
                   <MailIcon className="w-4 h-4" />

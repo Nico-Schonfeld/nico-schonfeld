@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sileo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,8 +23,20 @@ const lastoria = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nicoschonfeld.com"),
   title: "Nicolás Schönfeld",
   description: "Portafolio de Nicolás Schönfeld, desarrollador full stack.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Nicolás Schönfeld",
+    description: "Portafolio de Nicolás Schönfeld, desarrollador full stack.",
+    url: "https://nicoschonfeld.com",
+    siteName: "Nicolás Schönfeld",
+    locale: "es_AR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -41,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
         >
           {children}
+          <Toaster position="top-right" />
         </ThemeProvider>
       </body>
     </html>
