@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cv": "google-chrome --headless --disable-gpu --no-sandbox --user-data-dir=/tmp/chrome-cv-profile --no-pdf-header-footer --print-to-pdf=public/CV-NicoSchonfeld-2027.pdf file://$PWD/cv/cv.html && cp public/CV-NicoSchonfeld-2027.pdf ../CV-NicoSchonfeld-2027.pdf"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

@@ -22,9 +22,15 @@ export function Contact() {
         <BleedLine variant="solid" className="mb-3" />
 
         <div className="flex items-center flex-wrap gap-2">
-          {/* <Button>
-            <FileIcon className="w-4 h-4" /> CV
-          </Button> */}
+          <Link
+            href="/CV-NicoSchonfeld-2027.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button>
+              <FileIcon className="w-4 h-4" /> CV
+            </Button>
+          </Link>
           <Link
             href="https://www.linkedin.com/in/nicoschonfeld/"
             target="_blank"

@@ -44,7 +44,7 @@ export function Hero({
               className="block h-auto max-w-full"
             />
             <p className="dark:dark:text-[#b5b5bf] text-[#a1a1a1] text-ms px-3 border-t">
-              Desarrollador Full Stack · Next.js y TypeScript
+              Desarrollador Full Stack · Next.js · React · TypeScript
             </p>
           </div>
         </div>

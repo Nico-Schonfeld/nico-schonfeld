@@ -5,6 +5,11 @@ import { Footer, HatchBand } from "@/components/ui/construction";
 
 const links = [
   {
+    href: "/CV-NicoSchonfeld-2027.pdf",
+    label: "CV",
+    external: true,
+  },
+  {
     href: "https://www.linkedin.com/in/nicoschonfeld/",
     label: "LinkedIn",
     external: true,
