@@ -1,12 +1,13 @@
 {
   "name": "nico-schonfeld",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "banner": "for t in dark light; do google-chrome --headless --disable-gpu --no-sandbox --user-data-dir=/tmp/chrome-banner --hide-scrollbars --force-device-scale-factor=1 --window-size=1280,320 --virtual-time-budget=2000 --screenshot=linkedin/banner-$t.png \"file://$PWD/linkedin/banner.html?$t\"; google-chrome --headless --disable-gpu --no-sandbox --user-data-dir=/tmp/chrome-banner --hide-scrollbars --force-device-scale-factor=2 --window-size=1280,320 --virtual-time-budget=2000 --screenshot=linkedin/banner-$t@2x.png \"file://$PWD/linkedin/banner.html?$t\"; done",
     "cv": "google-chrome --headless --disable-gpu --no-sandbox --user-data-dir=/tmp/chrome-cv-profile --no-pdf-header-footer --print-to-pdf=public/CV-NicoSchonfeld-2027.pdf file://$PWD/cv/cv.html && cp public/CV-NicoSchonfeld-2027.pdf ../CV-NicoSchonfeld-2027.pdf"
   },
   "dependencies": {

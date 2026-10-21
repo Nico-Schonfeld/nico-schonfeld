@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Banner LinkedIn · Nicolás Schönfeld</title>
+    <style>
+      @font-face {
+        font-family: "Lastoria";
+        src: url("fonts/LastoriaBoldRegular.otf") format("opentype");
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("fonts/Geist.woff2") format("woff2");
+        font-weight: 100 900;
+      }
+
+      @font-face {
+        font-family: "Geist Mono";
+        src: url("fonts/GeistMono.woff2") format("woff2");
+        font-weight: 100 900;
+      }
+
+      :root {
+        --bg: #090909;
+        --fg: #ffffff;
+        --muted: #b5b5bf;
+        --line: rgb(255 255 255 / 0.1);
+        --pill-bg: rgb(255 255 255 / 0.05);
+        --pill-border: rgb(255 255 255 / 0.12);
+        --col-left: 340px;
+        --col-right: 1220px;
+        --band: 36px;
+        --row-split: 196px;
+      }
+
+      body.light {
+        --bg: #ffffff;
+        --fg: #090909;
+        --muted: #6d6d6d;
+        --line: rgb(0 0 0 / 0.12);
+        --pill-bg: rgb(0 0 0 / 0.04);
+        --pill-border: rgb(0 0 0 / 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 1280px;
+        height: 320px;
+        overflow: hidden;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: "Geist", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .banner {
+        position: relative;
+        width: 1280px;
+        height: 320px;
+        overflow: hidden;
+      }
+
+      .glow {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            520px 260px at 1010px 40px,
+            rgb(140 120 255 / 0.07),
+            transparent 70%
+          ),
+          radial-gradient(
+            420px 220px at 560px 300px,
+            rgb(80 200 255 / 0.05),
+            transparent 70%
+          );
+      }
+
+      body.light .glow {
+        opacity: 0.6;
+      }
+
+      .hatch {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: var(--band);
+        background-image: repeating-linear-gradient(
+          -45deg,
+          transparent 0 4px,
+          var(--line) 4px 5px
+        );
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hatch.top {
+        top: -1px;
+      }
+
+      .hatch.bottom {
+        bottom: -1px;
+      }
+
+      .guide-y {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--line);
+      }
+
+      .guide-x {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--line);
+      }
+
+      .cross {
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        transform: translate(-5px, -5px);
+      }
+
+      .cross::before,
+      .cross::after {
+        content: "";
+        position: absolute;
+        background: var(--muted);
+        opacity: 0.55;
+      }
+
+      .cross::before {
+        left: 5px;
+        top: 0;
+        width: 1px;
+        height: 11px;
+      }
+
+      .cross::after {
+        top: 5px;
+        left: 0;
+        width: 11px;
+        height: 1px;
+      }
+
+      .signature {
+        position: absolute;
+        left: calc(var(--col-left) + 36px);
+        top: 104px;
+        font-family: "Lastoria", cursive;
+        font-size: 27px;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .role {
+        position: absolute;
+        left: calc(var(--col-left) + 40px);
+        top: calc(var(--row-split) + 16px);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .role-title {
+        font-size: 25px;
+        line-height: 1.1;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      .role-stack {
+        font-family: "Geist Mono", monospace;
+        font-size: 15px;
+        color: var(--muted);
+      }
+
+      .meta {
+        position: absolute;
+        right: calc(1280px - var(--col-right) + 32px);
+        bottom: calc(var(--band) + 26px);
+        font-family: "Geist Mono", monospace;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .cursor {
+        position: absolute;
+        left: 1010px;
+        top: 96px;
+      }
+
+      .cursor svg {
+        display: block;
+        width: 22px;
+        height: 22px;
+      }
+
+      .cursor-label {
+        position: absolute;
+        left: 18px;
+        top: 24px;
+        padding: 4px 9px;
+        border-radius: 7px;
+        border: 1px solid var(--pill-border);
+        background: var(--pill-bg);
+        font-family: "Geist Mono", monospace;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      .note {
+        position: absolute;
+        left: 92px;
+        top: 62px;
+        font-family: "Geist Mono", monospace;
+        font-size: 15px;
+        line-height: 1.35;
+        color: var(--muted);
+        transform: rotate(-5deg);
+        transform-origin: left top;
+      }
+
+      .note-arrow {
+        position: absolute;
+        left: 40px;
+        top: 70px;
+        width: 70px;
+        height: 110px;
+        color: var(--muted);
+      }
+
+      .preview-photo {
+        display: none;
+        position: absolute;
+        left: 38px;
+        top: 200px;
+        width: 242px;
+        height: 242px;
+        border-radius: 999px;
+        background: #6b6b6b;
+        border: 6px solid #ffffff;
+      }
+
+      body.preview .preview-photo {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="glow"></div>
+
+      <div class="hatch top"></div>
+      <div class="hatch bottom"></div>
+
+      <div class="guide-y" style="left: var(--col-left)"></div>
+      <div class="guide-y" style="left: var(--col-right)"></div>
+      <div class="guide-x" style="top: var(--row-split)"></div>
+
+      <span
+        class="cross"
+        style="left: var(--col-left); top: var(--band)"
+      ></span>
+      <span
+        class="cross"
+        style="left: var(--col-right); top: var(--band)"
+      ></span>
+      <span
+        class="cross"
+        style="left: var(--col-left); top: var(--row-split)"
+      ></span>
+      <span
+        class="cross"
+        style="left: var(--col-right); top: var(--row-split)"
+      ></span>
+      <span
+        class="cross"
+        style="left: var(--col-left); top: calc(320px - var(--band))"
+      ></span>
+      <span
+        class="cross"
+        style="left: var(--col-right); top: calc(320px - var(--band))"
+      ></span>
+
+      <div class="note">¡Hola!<br />soy yo</div>
+      <svg
+        class="note-arrow"
+        viewBox="0 0 70 110"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M44 6 C 18 20, 10 58, 30 100" />
+        <path d="M20 90 L 30 101 L 37 87" />
+      </svg>
+
+      <div class="signature">Nico Schönfeld</div>
+
+      <div class="role">
+        <span class="role-title">Desarrollador Full Stack</span>
+        <span class="role-stack">Next.js · React · TypeScript</span>
+      </div>
+
+      <div class="meta">Córdoba, Argentina · nicoschonfeld.com</div>
+
+      <div class="cursor">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M4 2.5 L4 19 L8.6 14.6 L11.6 21.2 L14.4 20 L11.4 13.5 L18 13.5 Z"
+            stroke="var(--bg)"
+            stroke-width="1.2"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="cursor-label">¿Conectemos?</span>
+      </div>
+
+      <div class="preview-photo"></div>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(location.search);
+      if (params.has("light")) document.body.classList.add("light");
+      if (params.has("preview")) document.body.classList.add("preview");
+    </script>
+  </body>
+</html>
