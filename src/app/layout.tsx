@@ -40,8 +40,23 @@ export const metadata: Metadata = {
     "Next.js",
     "TypeScript",
     "React",
+    "TailwindCSS",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "SASS",
+    "Git",
+    "GitHub",
+    "PrismaORM",
+    "PostgreSQL",
+    "MySQL",
+    "Supabase",
+    "Docker",
+    "Linux",
+    "AWS",
     "portafolio",
     "Córdoba",
+    "Argentina",
   ],
   authors: [{ name: "Nicolás Schönfeld", url: "https://nicoschonfeld.com" }],
   creator: "Nicolás Schönfeld",
@@ -91,7 +106,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
