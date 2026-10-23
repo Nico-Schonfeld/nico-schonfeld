@@ -26,7 +26,7 @@ export function HomeCursor({ hidden }: { hidden: boolean }) {
               ☕
             </span>
           </div>
-          <span>¿Conectemos?</span>
+          <span>¿Conectamos?</span>
         </TextLoop>
       </CursorFollow>
     </CursorProvider>
